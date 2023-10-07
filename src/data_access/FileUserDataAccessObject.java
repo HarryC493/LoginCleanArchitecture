@@ -2,7 +2,9 @@ package data_access;
 
 import entity.User;
 import entity.UserFactory;
+import use_case.UserSignupDataAccessInterface;
 
+import javax.swing.*;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -47,6 +49,9 @@ public class FileUserDataAccessObject implements UserSignupDataAccessInterface {
                     User user = userFactory.create(username, password, ldt);
                     accounts.put(username, user);
                 }
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Could not open user data file.");
             }
         }
     }
